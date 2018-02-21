@@ -16,7 +16,9 @@ import { NotesService } from "../../services/notes.service";
 })
 export class DetailPage {
   note:any = {id: null, title: null, description: null};
+  // note =[];
   id: null;
+  show = true;
   constructor(public navCtrl: NavController, public navParams: NavParams, public notesService: NotesService) {
     this.id = navParams.get('id');
     if (this.id !=0) {    
@@ -48,6 +50,7 @@ export class DetailPage {
  }
 
 deleteNote(){
+  this.show = false;
   this.notesService.deleteNote(this.note);
   alert('Nota eliminada exitosamente');
   this.navCtrl.pop();

@@ -36,22 +36,27 @@ id    */
   }
 
    public editNote(note) {
-        for (let i = 0; i < this.notes.length; i++){
-            if (this.notes[i] == note) {
-               this.notes[i] = note;
-            }     
-        }   
+        // for (let i = 0; i < this.notes.length; i++){
+        //     if (this.notes[i] == note) {
+        //        this.notes[i] = note;
+        //     }     
+        // }   
+        this.afDB.database.ref('notas/' + note.id).set(note);
+
     }
 
   /**
    * deleteNote
    */
   public deleteNote(note) {
-      for (let i = 0; i < this.notes.length; i++){
-           if (this.notes[i] == note) {
-               this.notes.splice(i, 1);
-            }     
-        } 
+    //   for (let i = 0; i < this.notes.length; i++){
+    //        if (this.notes[i] == note) {
+    //            this.notes.splice(i, 1);
+    //         }     
+    //     } 
+    
+    this.afDB.database.ref('notas/' + note.id).remove();
+
     }
 
 }
