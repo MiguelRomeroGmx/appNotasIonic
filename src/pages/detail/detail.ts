@@ -30,10 +30,17 @@ export class DetailPage {
   }
 
   addNote(){
+    if (this.id != 0) {
+      //Editando
+      this.notesService.editNote(this.note);
+    alert('Nota editada exitosamente');
+    }
+    else{
+      //Nueva nota
     this.note.id = Date.now();
     this.notesService.createNote(this.note);
     alert('Nota creada exitosamente');
-    this.navCtrl.pop();
   }
-
+   this.navCtrl.pop();
+ }
 }

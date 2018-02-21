@@ -32,7 +32,7 @@ id    */
   }
 
    public editNote(note) {
-      for (let i; this.notes.length; i++){
+      for (let i; i < this.notes.length; i++){
            if (this.notes[i] == note) {
                this.notes[i] = note;
            }     
