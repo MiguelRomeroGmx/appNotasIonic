@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
+import {AngularFireDatabase} from "angularfire2/database/database";
 
 @Injectable()
 export class NotesService {
+    constructor (public afDB: AngularFireDatabase){
+
+    }
     notes =[
     {id:1, title:'Nota 1', description:'Descripción de nota 1'},
     {id:2, title:'Nota 2', description:'Descripción de nota 2'},
@@ -28,7 +32,8 @@ id    */
    * createNote
    */
   public createNote(note) {
-      this.notes.push(note);
+      this.afDB.database.ref('notas/' + note.id).set(note);
+    //   this.notes.push(note);
   }
 
    public editNote(note) {
