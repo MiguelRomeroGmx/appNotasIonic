@@ -15,13 +15,16 @@ import { NotesService } from "../../services/notes.service";
   templateUrl: 'detail.html',
 })
 export class DetailPage {
-  note = {id: null, title: null, description: null};
+  note:any = {id: null, title: null, description: null};
   id: null;
   constructor(public navCtrl: NavController, public navParams: NavParams, public notesService: NotesService) {
     this.id = navParams.get('id');
-    if (this.id !=0) {
-      
-    this.note = notesService.getNote(this.id);
+    if (this.id !=0) {    
+    notesService.getNote(this.id)
+      .valueChanges().subscribe(note =>{
+        console.log(note)
+        this.note = note;
+      });
   }
 }
 

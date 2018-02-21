@@ -9,9 +9,12 @@ import { DetailPage } from '../detail/detail';
 })
 export class HomePage {
   notes =[];
-   @ViewChild('myNav') nav: NavController
+   @ViewChild('myNav') nav: NavController;
   constructor(public navCtrl: NavController, public notesService : NotesService) {
-    this.notes = notesService.getNotes();
+    notesService.getNotes()
+      .valueChanges().subscribe( notas =>{
+        this.notes = notas;
+      });
   }
 
   /**

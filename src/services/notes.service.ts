@@ -6,26 +6,25 @@ export class NotesService {
     constructor (public afDB: AngularFireDatabase){
 
     }
-    notes =[
-    {id:1, title:'Nota 1', description:'Descripción de nota 1'},
-    {id:2, title:'Nota 2', description:'Descripción de nota 2'},
-    {id:3, title:'Nota 3', description:'Descripción de nota 3'}
-  ];
+    notes =[];
 
   /**
    * getNotes
    */
   public getNotes() {
-      return this.notes;
+    //   return this.notes;
+    return this.afDB.list('notas/');
   }
 
   /**
    * getNote
 id    */
   public getNote(id) {
-      return this.notes.filter(function (e, i) {
-          return e.id == id  
-      }) [0] || {id: null, title: null, description: null};
+      
+    return this.afDB.object('notas/' + id);
+    // return this.notes.filter(function (e, i) {
+    //       return e.id == id  
+    //   }) [0] || {id: null, title: null, description: null};
   }
 
   /**
