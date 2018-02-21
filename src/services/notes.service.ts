@@ -32,11 +32,22 @@ id    */
   }
 
    public editNote(note) {
-      for (let i; i < this.notes.length; i++){
-           if (this.notes[i] == note) {
+        for (let i = 0; i < this.notes.length; i++){
+            if (this.notes[i] == note) {
                this.notes[i] = note;
-           }     
-      }
-  }
+            }     
+        }   
+    }
+
+  /**
+   * deleteNote
+   */
+  public deleteNote(note) {
+      for (let i = 0; i < this.notes.length; i++){
+           if (this.notes[i] == note) {
+               this.notes.splice(i, 1);
+            }     
+        } 
+    }
 
 }

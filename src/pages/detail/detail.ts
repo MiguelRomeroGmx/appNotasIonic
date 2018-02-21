@@ -43,4 +43,12 @@ export class DetailPage {
   }
    this.navCtrl.pop();
  }
+
+deleteNote(){
+  this.notesService.deleteNote(this.note);
+  alert('Nota eliminada exitosamente');
+  this.navCtrl.pop();
+}
+
+
 }
